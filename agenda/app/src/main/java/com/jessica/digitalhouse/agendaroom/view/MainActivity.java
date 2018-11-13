@@ -70,7 +70,7 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewOnCli
                             agenda.setNomeContato(nomeContato);
                             agenda.setTelefone(telefoneContato);
                             dao.atualizarAgenda(agenda);
-                            Toast.makeText(MainActivity.this, "Atualizado", Toast.LENGTH_SHORT).show();
+                            System.out.println("Atualizado");
                         }else{
 
                             agenda = new Agenda();
@@ -97,7 +97,7 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewOnCli
                         if (agenda != null){
                             dao.deletarContato(agenda);
                         }else {
-                            Toast.makeText(MainActivity.this, "Não Encontrado", Toast.LENGTH_SHORT).show();
+                            System.out.println("Não encontrado!");
                         }
                     }
                 }).start();
