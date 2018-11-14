@@ -36,14 +36,23 @@ public class MainActivity extends AppCompatActivity {
 
         initViews();
 
-        recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
+        //recyclerView em modo horizontal
         //recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
+
+        //recyclerView em modo vertical
+        //recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        //recyclerView em modo Grid
+        recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
         recyclerView.setAdapter(adapter);
 
+        //setando a nova lista para o adapter do recyclerView
         viewModel.getMovies("e1a9eef62eef24833db25f0491f893c7", "PT-BR");
         viewModel.resultsLiveData.observe(this, (List<Result> results) -> {
             adapter.setResult(results);
         });
+
+        //mudando a visibilidade da barra de progresso de acordo com o retorno do isLoading
         viewModel.isLoading.observe(this, (Boolean loading) -> {
             if (loading){
                 progressBar.setVisibility(View.VISIBLE);
