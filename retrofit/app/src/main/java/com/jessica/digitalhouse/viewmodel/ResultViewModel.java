@@ -20,7 +20,8 @@ import io.reactivex.schedulers.Schedulers;
 import static com.jessica.digitalhouse.network.RetrofitService.getApiService;
 
 public class ResultViewModel extends AndroidViewModel {
-    public MutableLiveData<List<Result>> resultsLiveData = new MutableLiveData<>();
+    public MutableLiveData<List<Resu
+    lt>> resultsLiveData = new MutableLiveData<>();
     MutableLiveData<Throwable> resultLiveDataError = new MutableLiveData<>();
     public MutableLiveData<Boolean> isLoading = new MutableLiveData<>();
     private CompositeDisposable disposable = new CompositeDisposable();

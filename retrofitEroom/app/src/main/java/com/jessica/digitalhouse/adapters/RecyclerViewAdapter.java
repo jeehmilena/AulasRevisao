@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 
 import com.jessica.digitalhouse.R;
+import com.jessica.digitalhouse.interfaces.RecyclerViewClick;
 import com.jessica.digitalhouse.model.Result;
 import com.squareup.picasso.Picasso;
 
@@ -18,9 +19,11 @@ import java.util.List;
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder> {
 
     private List<Result> results;
+    private RecyclerViewClick listener;
 
-    public RecyclerViewAdapter(List<Result> results) {
+    public RecyclerViewAdapter(List<Result> results, RecyclerViewClick listener) {
         this.results = results;
+        this.listener = listener;
     }
 
     @NonNull
@@ -34,6 +37,13 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
         Result result = results.get(i);
         viewHolder.bind(result);
+
+        viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                listener.clickListenner(result);
+            }
+        });
     }
 
     //método que atualiza a lista do adapter

@@ -8,17 +8,19 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 
 
 import com.jessica.digitalhouse.R;
 import com.jessica.digitalhouse.adapters.RecyclerViewAdapter;
+import com.jessica.digitalhouse.interfaces.RecyclerViewClick;
 import com.jessica.digitalhouse.model.Result;
 import com.jessica.digitalhouse.viewmodel.ResultViewModel;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements RecyclerViewClick {
 
     private RecyclerView recyclerView;
     private List<Result> results = new ArrayList<>();
@@ -66,7 +68,13 @@ public class MainActivity extends AppCompatActivity {
     private void initViews() {
         recyclerView = findViewById(R.id.recyclerview);
         progressBar = findViewById(R.id.progress_bar);
-        adapter = new RecyclerViewAdapter(results);
+        adapter = new RecyclerViewAdapter(results, this);
         viewModel = ViewModelProviders.of(this).get(ResultViewModel.class);
+    }
+
+    @Override
+    public void clickListenner(Result result) {
+        long id = result.getId();
+        Toast.makeText(this, "ID "+result.getId(), Toast.LENGTH_SHORT).show();
     }
 }
