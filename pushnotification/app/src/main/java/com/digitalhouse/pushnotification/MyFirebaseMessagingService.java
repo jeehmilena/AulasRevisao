@@ -51,7 +51,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
                 .setWhen(System.currentTimeMillis())
                 .setTicker("Hearty365")
                 //     .setPriority(Notification.PRIORITY_MAX)
-                .setContentTitle("MrTinder seu Lindo")
+                .setContentTitle("Push Notification")
                 .setContentText(body)
                 .setContentInfo("Info")
                 .setSmallIcon(R.mipmap.ic_launcher);
